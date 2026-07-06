@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/* ============================================================
+   GENESIS DESIGN SYSTEM — Global Styles
+   ============================================================ */
+
+:root {
+  /* Core Palette */
+  --genesis-black: #000000;
+  --genesis-deep: #030308;
+  --genesis-surface: #0a0a14;
+  --genesis-elevated: #0f0f1e;
+
+  /* Neon Accents */
+  --neon-blue: #00A8FF;
+  --neon-purple: #7B2FFF;
+  --neon-cyan: #00F5FF;
+  --neon-violet: #A855F7;
+  --neon-indigo: #4F46E5;
+
+  /* Glass System */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.07);
+  --glass-active: rgba(255, 255, 255, 0.10);
+
+  /* Typography */
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--genesis-deep);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+  user-select: none;
+}
+
+#__next,
+#__next > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   SCROLLBAR SYSTEM
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   GLASS MORPHISM UTILITIES
+   ============================================================ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-elevated {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 20, 0.95) 0%,
+    rgba(15, 15, 30, 0.90) 100%
+  );
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ============================================================
+   NEON GLOW UTILITIES
+   ============================================================ */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.35),
+              0 0 60px rgba(0, 168, 255, 0.15);
+}
+.glow-purple {
+  box-shadow: 0 0 20px rgba(123, 47, 255, 0.35),
+              0 0 60px rgba(123, 47, 255, 0.15);
+}
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.35),
+              0 0 60px rgba(0, 245, 255, 0.15);
+}
+.glow-violet {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35),
+              0 0 60px rgba(168, 85, 247, 0.15);
+}
+
+.text-glow-blue { text-shadow: 0 0 16px rgba(0, 168, 255, 0.8); }
+.text-glow-cyan { text-shadow: 0 0 16px rgba(0, 245, 255, 0.8); }
+.text-glow-purple { text-shadow: 0 0 16px rgba(123, 47, 255, 0.8); }
+.text-glow-violet { text-shadow: 0 0 16px rgba(168, 85, 247, 0.8); }
+
+/* ============================================================
+   NEON BORDER GRADIENTS
+   ============================================================ */
+.border-neon-blue {
+  border-color: rgba(0, 168, 255, 0.5);
+}
+.border-neon-purple {
+  border-color: rgba(123, 47, 255, 0.5);
+}
+.border-gradient-blue-purple {
+  border-image: linear-gradient(135deg, #00A8FF, #7B2FFF) 1;
+}
+
+/* ============================================================
+   TOOL BUTTON BASE
+   ============================================================ */
+.tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,168,255,0.1), rgba(123,47,255,0.1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tool-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 168, 255, 0.35);
+  box-shadow: 0 0 16px rgba(0, 168, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.tool-btn:hover::before {
+  opacity: 1;
+}
+
+.tool-btn.active {
+  color: #00A8FF;
+  border-color: rgba(0, 168, 255, 0.6);
+  background: rgba(0, 168, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+}
+
+.tool-btn.active::before {
+  opacity: 1;
+}
+
+/* ============================================================
+   KATEX OVERRIDES
+   ============================================================ */
+.katex-display {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.katex {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   STAGE PROGRESS BAR
+   ============================================================ */
+.stage-bar {
+  height: 2px;
+  background: linear-gradient(90deg, #00A8FF, #7B2FFF, #00F5FF);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+  border-radius: 1px;
+}
+
+/* ============================================================
+   CUSTOM RANGE INPUT
+   ============================================================ */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00A8FF, #7B2FFF);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 168, 255, 0.5);
+  transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ============================================================
+   SELECTION / HIGHLIGHT
+   ============================================================ */
+::selection {
+  background: rgba(0, 168, 255, 0.3);
+  color: white;
+}
+
+/* ============================================================
+   TOPBAR GRADIENT BOTTOM BORDER
+   ============================================================ */
+.topbar-border {
+  border-bottom: 1px solid;
+  border-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 168, 255, 0.3) 30%,
+    rgba(123, 47, 255, 0.3) 70%,
+    transparent 100%
+  ) 1;
+}
+
+/* ============================================================
+   OBJECT CARD HOVER
+   ============================================================ */
+.object-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.object-card:hover {
+  background: rgba(0, 168, 255, 0.08);
+  border-color: rgba(0, 168, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND GRID
+   ============================================================ */
+.cosmos-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 168, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(123, 47, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(0, 245, 255, 0.02) 0%, transparent 50%),
+    #030308;
+}
+
+/* ============================================================
+   BOTTOM BAR METRIC CHIP
+   ============================================================ */
+.metric-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   PANEL SECTION LABEL
+   ============================================================ */
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 0 4px 8px;
+}
+
+/* ============================================================
+   THINKING DOT PULSE
+   ============================================================ */
+.thinking-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00A8FF;
+  animation: pulse-neon 1.4s ease-in-out infinite;
+}
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ============================================================
+   VERSION TIMELINE
+   ============================================================ */
+.timeline-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: var(--genesis-surface);
+  transition: all 0.2s;
+}
+.timeline-node.active {
+  border-color: #00A8FF;
+  background: rgba(0, 168, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0,168,255,0.5);
+}
+
+/* ============================================================
+   CANVAS CURSOR OVERRIDES
+   ============================================================ */
+canvas {
+  cursor: crosshair !important;
+}
+canvas.tool-move { cursor: move !important; }
+canvas.tool-select { cursor: default !important; }
+canvas.tool-erase { cursor: cell !important; }
+
+/* ============================================================
+   SHIMMER ANIMATION KEYFRAME
+   ============================================================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,168,255,0.3); }
+  50% { box-shadow: 0 0 40px rgba(0,168,255,0.6), 0 0 80px rgba(0,168,255,0.2); }
+}
+
+@keyframes stage-in {
+  0% { opacity: 0; transform: translateX(-8px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
